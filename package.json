@@ -1,0 +1,14 @@
+{
+  "name": "WebTalkingVRoid",
+  "version": "0.1.0",
+  "description": "VRoid + glTF + three.js + Web Audio API",
+  "main": "",
+  "scripts": {
+    "serve": "ws"
+  },
+  "author": "hyunjun529@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "local-web-server": "^2.6.0"
+  }
+}
