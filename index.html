@@ -3,12 +3,61 @@
 <head>
     <title>Web Talking VRoid</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="VRoid + glTF + three.js + Web Audio API">
+    <meta name="author" content="hyunjun529">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>Web Talking VRoid</h1>
-    
+<body class="d-flex flex-column h-100">
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col">
+                <h1 class="mt-5">Web Talking VRoid</h1>
+                <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+                <p>link <a href="#">Hello</a> if need be, too.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col">
+                <h2 class="mt-5">Chracter</h2>
+                <div>
+                    <canvas id="cvs-render-vroid" width="640" height="360" style="background-color:#00FF00; width:100%; max-width:640px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col">
+                <h2 class="mt-5">Audio Visualization</h2>
+                <div>
+                    <h3 class="mt-7">all vowels</h3>
+                    <canvas id="cvs-audio-visualization-sum" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
+                </div>
+                <div>
+                    <h3 class="mt-7">raw input</h3>
+                    <canvas id="cvs-audio-visualization-input" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
+                </div>
+                <div>
+                    <h3 class="mt-7">vowel - a</h3>
+                    <canvas id="cvs-audio-visualization-a" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
+                </div>
+                <div>
+                    <h3 class="mt-7">vowel - i</h3>
+                    <canvas id="cvs-audio-visualization-i" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
+                </div>
+                <div>
+                    <h3 class="mt-7">vowel - u</h3>
+                    <canvas id="cvs-audio-visualization-u" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script/three.min.js"></script>
 
     <script src="script/js/controls/OrbitControls.js"></script>
