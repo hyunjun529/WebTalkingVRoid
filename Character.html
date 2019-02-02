@@ -35,7 +35,28 @@
     <script>
         function animate() {
             requestAnimationFrame( animate );
-            //controls.update();
+
+            /*
+            TODO) Need More!!
+            12 = EYE_CLOSE
+            13 = EYE_CLOSE_R
+            14 = EYE_CLOSE_L
+
+            19 = EYE_Surpirsed
+
+            29 = MTH_A
+            30 = MTH_I
+            31 = MTH_U
+            32 = MTH_E
+            33 = MTH_O
+            */
+
+            // flash! (for test morph)
+            for (var i = 0; i < morphMesheFace.morphTargetInfluences.length; i++) {
+                morphMesheFace.morphTargetInfluences[i] = Math.floor(Math.random() * 10) * 0.1;
+            }
+
+            controls.update();
             renderer.render( scene, camera );
         }
         

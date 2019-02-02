@@ -5,6 +5,8 @@ if ( WEBGL.isWebGLAvailable() === false ) {
 var container, stats, controls;
 var camera, scene, renderer, light;
 
+var morphMesheFace;
+
 init();
 
 function init() {
@@ -30,12 +32,17 @@ function init() {
 
     var loader = new THREE.GLTFLoader().setPath( 'resource/' );
     loader.load( 'Sendagaya_Shibu.glb', function ( gltf ) {
-        gltf.scene.traverse( function ( child ) {
-            if ( child.isMesh ) {
-                child.material = new THREE.MeshMatcapMaterial( {
+        gltf.scene.traverse( function ( node ) {
+            if ( node.isMesh ) {
+                node.material = new THREE.MeshMatcapMaterial( {
                     color: matColor,
-                    matcap: matcap
+                    matcap: matcap,
                 } );
+            }
+            if (node.isMesh && node.morphTargetInfluences) {
+                // this setup is just for MatCap
+                node.material.morphTargets = true;
+                morphMesheFace = node;
             }
         } );
         scene.add( gltf.scene );
