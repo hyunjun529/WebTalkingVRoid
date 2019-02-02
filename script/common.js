@@ -28,7 +28,7 @@ function init() {
 
     var matColor = new THREE.Color(0x444444);
 
-    var loader = new THREE.GLTFLoader().setPath( '/resource/' );
+    var loader = new THREE.GLTFLoader().setPath( 'resource/' );
     loader.load( 'Sendagaya_Shibu.glb', function ( gltf ) {
         gltf.scene.traverse( function ( child ) {
             if ( child.isMesh ) {
