@@ -15,8 +15,7 @@
     <div class="container">
         <div class="row justify-content-md-center mt-2">
             <div class="col">
-                <div>
-                    <canvas id="cvs-render-vroid" width="640" height="360" style="background-color:#00FF00; width:100%; max-width:640px;"></canvas>
+                <div id="cvs-render-vroid">
                 </div>
                 <h2 class="mt-4">Chracter</h2>
             </div>
@@ -32,5 +31,15 @@
 
     <script src="script/common.js"></script>
     <script src="script/charcter.js"></script>
+
+    <script>
+        function animate() {
+            requestAnimationFrame( animate );
+            //controls.update();
+            renderer.render( scene, camera );
+        }
+        
+        animate();        
+    </script>
 </body>
 </html>

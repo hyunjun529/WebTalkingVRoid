@@ -1,0 +1,9 @@
+#cvs-render-vroid {
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+}
+
+#cvs-render-vroid > canvas {
+    width: 100%;
+}
