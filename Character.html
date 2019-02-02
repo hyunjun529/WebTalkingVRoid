@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Web Talking VRoid</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="VRoid + glTF + three.js + Web Audio API">
+    <meta name="author" content="hyunjun529">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="d-flex flex-column h-100">
+    <div class="container">
+        <div class="row justify-content-md-center mt-2">
+            <div class="col">
+                <div>
+                    <canvas id="cvs-render-vroid" width="640" height="360" style="background-color:#00FF00; width:100%; max-width:640px;"></canvas>
+                </div>
+                <h2 class="mt-4">Chracter</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/three.min.js"></script>
+
+    <script src="script/js/controls/OrbitControls.js"></script>
+    <script src="script/js/loaders/GLTFLoader.js"></script>
+
+    <script src="script/js/WebGL.js"></script>
+
+    <script src="script/common.js"></script>
+    <script src="script/charcter.js"></script>
+</body>
+</html>
