@@ -1,3 +1,26 @@
+const FACE_MORPH = {
+    "EYE_CLOSE" : 12,
+    "EYE_CLOSE_R" : 13,
+    "EYE_CLOSE_L" : 14,
+
+    "EYE_Surpirsed" : 19,
+
+    "MTH_A" : 29,
+    "MTH_I" : 30,
+    "MTH_U" : 31,
+    "MTH_E" : 32,
+    "MTH_O" : 33,
+}
+
+const BONE = {
+    "standard":null,
+}
+
+const ANIMATION = {
+    "standard":null,
+}
+
+
 if ( WEBGL.isWebGLAvailable() === false ) {
     document.body.appendChild( WEBGL.getWebGLErrorMessage() );
 }

@@ -7,3 +7,7 @@
 #cvs-render-vroid > canvas {
     width: 100%;
 }
+
+#broadcast {
+    background-color: whitesmoke;
+}

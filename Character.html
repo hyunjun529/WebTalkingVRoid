@@ -17,7 +17,7 @@
             <div class="col">
                 <div id="cvs-render-vroid">
                 </div>
-                <h2 class="mt-4">Chracter</h2>
+                <h2 id="broadcast" class="mt-4">현재 작업 진행 상황</h2>
             </div>
         </div>
     </div>
@@ -33,28 +33,17 @@
     <script src="script/charcter.js"></script>
 
     <script>
+        const yame = 100;
+        var cnt = 0;
         function animate() {
             requestAnimationFrame( animate );
 
-            /*
-            TODO) Need More!!
-            12 = EYE_CLOSE
-            13 = EYE_CLOSE_R
-            14 = EYE_CLOSE_L
-
-            19 = EYE_Surpirsed
-
-            29 = MTH_A
-            30 = MTH_I
-            31 = MTH_U
-            32 = MTH_E
-            33 = MTH_O
-            */
-
-            // flash! (for test morph)
-            for (var i = 0; i < morphMesheFace.morphTargetInfluences.length; i++) {
-                morphMesheFace.morphTargetInfluences[i] = Math.floor(Math.random() * 10) * 0.1;
-            }
+            if(yame < cnt){ 
+                for (var k in FACE_MORPH) {
+                    morphMesheFace.morphTargetInfluences[FACE_MORPH[k]] = Math.floor(Math.random() * 7) * 0.1;
+                }
+                cnt = 0;
+            } else { cnt+=1; }
 
             controls.update();
             renderer.render( scene, camera );
