@@ -224,7 +224,7 @@ class Transition {
         this.isDone = true;
 
         this.step = 0;
-        this.duration = 10;
+        this.duration = 25;
     }
 
     update() {
