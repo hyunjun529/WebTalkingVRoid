@@ -17,7 +17,7 @@
             <div class="col">
                 <div id="cvs-render-vroid">
                 </div>
-                <h2 id="broadcast" class="mt-4">현재 작업 진행 상황</h2>
+                <h2 id="broadcast" class="">아직 공사중! 얘가 지금 코딩되고 있어요!</h2>
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
     <script src="script/character.js"></script>
 
     <script>
-        const yame = 25;
+        const yame = 30;
         var cnt = 0;
 
         var mousePosX = 0.0;
@@ -42,34 +42,45 @@
             requestAnimationFrame( animate );
 
             if( morphMesheFace ) {
+                
                 // reset Target
                 if(yame < cnt){ 
                     for ( var k in FACE_MORPH ) {
-                        weightFace[FACE_MORPH[k]].setTarget( Math.floor(Math.random() * 7) * 0.1 );
+                        weightFace[FACE_MORPH[k]].setTarget( Math.floor(Math.random() * 7) * 0.075 );
                     }
 
                     for (var b in boneBody) {
-                        // boneBodyTransition[b].x.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
-                        // boneBodyTransition[b].y.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
-                        // boneBodyTransition[b].z.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
                         boneBodyTransition[b].x.setTarget( -mousePosY * 0.2 );
                         boneBodyTransition[b].y.setTarget( mousePosX * 0.2 );
                         boneBodyTransition[b].z.setTarget( 0.0 );
                     }
+
+                    boneBodyTransition["J_Bip_C_Chest"].x.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.04);
+                    boneBodyTransition["J_Bip_C_Chest"].y.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.02);
+                    boneBodyTransition["J_Bip_C_Chest"].z.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.04);
+
+                    boneBodyTransition["J_Bip_C_Neck"].x.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.08);
+                    boneBodyTransition["J_Bip_C_Neck"].y.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.08);
+                    boneBodyTransition["J_Bip_C_Neck"].z.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.02);
+
+                    boneBodyTransition["J_Bip_C_Head"].x.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.02);
+                    boneBodyTransition["J_Bip_C_Head"].y.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.04);
+                    boneBodyTransition["J_Bip_C_Head"].z.setTarget( ((Math.random() * Math.PI * 0.25) - (Math.PI * 0.25)) * 0.04);
+
                     boneBodyTransition["J_Bip_L_UpperArm"].x.setTarget(0.436332);
                     boneBodyTransition["J_Bip_L_UpperArm"].y.setTarget(-0.623599);
                     boneBodyTransition["J_Bip_L_UpperArm"].z.setTarget(0.836332);
 
                     boneBodyTransition["J_Bip_L_LowerArm"].x.setTarget(-0.398132);
-                    boneBodyTransition["J_Bip_L_LowerArm"].y.setTarget(-1.19626);
+                    boneBodyTransition["J_Bip_L_LowerArm"].y.setTarget(-1.19626 + (Math.random() * Math.PI * 0.25) - (Math.PI * 0.25) * 0.01);
                     boneBodyTransition["J_Bip_L_LowerArm"].z.setTarget(0);
 
                     boneBodyTransition["J_Bip_R_UpperArm"].x.setTarget(0.436332);
-                    boneBodyTransition["J_Bip_R_UpperArm"].y.setTarget(0.523599);
+                    boneBodyTransition["J_Bip_R_UpperArm"].y.setTarget(0.523599 + (Math.random() * Math.PI * 0.25) - (Math.PI * 0.25) * 0.01);
                     boneBodyTransition["J_Bip_R_UpperArm"].z.setTarget(-0.785398);
 
                     boneBodyTransition["J_Bip_R_LowerArm"].x.setTarget(-0.349066);
-                    boneBodyTransition["J_Bip_R_LowerArm"].y.setTarget(1.22173);
+                    boneBodyTransition["J_Bip_R_LowerArm"].y.setTarget(1.22173 - (Math.random() * Math.PI * 0.25) - (Math.PI * 0.25) * 0.01);
                     boneBodyTransition["J_Bip_R_LowerArm"].z.setTarget(0);
 
                     cnt = 0;
