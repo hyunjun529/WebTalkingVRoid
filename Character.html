@@ -32,8 +32,11 @@
     <script src="script/character.js"></script>
 
     <script>
-        const yame = 100;
+        const yame = 25;
         var cnt = 0;
+
+        var mousePosX = 0.0;
+        var mousePosY = 0.0;
 
         function animate() {
             requestAnimationFrame( animate );
@@ -46,10 +49,28 @@
                     }
 
                     for (var b in boneBody) {
-                        boneBodyTransition[b].x.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
-                        boneBodyTransition[b].y.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
-                        boneBodyTransition[b].z.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
+                        // boneBodyTransition[b].x.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
+                        // boneBodyTransition[b].y.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
+                        // boneBodyTransition[b].z.setTarget(Math.floor(Math.random() * Math.PI * 0.5) - (Math.PI * 0.5) * 0.075 - 0.15);
+                        boneBodyTransition[b].x.setTarget( -mousePosY * 0.2 );
+                        boneBodyTransition[b].y.setTarget( mousePosX * 0.2 );
+                        boneBodyTransition[b].z.setTarget( 0.0 );
                     }
+                    boneBodyTransition["J_Bip_L_UpperArm"].x.setTarget(0.436332);
+                    boneBodyTransition["J_Bip_L_UpperArm"].y.setTarget(-0.623599);
+                    boneBodyTransition["J_Bip_L_UpperArm"].z.setTarget(0.836332);
+
+                    boneBodyTransition["J_Bip_L_LowerArm"].x.setTarget(-0.398132);
+                    boneBodyTransition["J_Bip_L_LowerArm"].y.setTarget(-1.19626);
+                    boneBodyTransition["J_Bip_L_LowerArm"].z.setTarget(0);
+
+                    boneBodyTransition["J_Bip_R_UpperArm"].x.setTarget(0.436332);
+                    boneBodyTransition["J_Bip_R_UpperArm"].y.setTarget(0.523599);
+                    boneBodyTransition["J_Bip_R_UpperArm"].z.setTarget(-0.785398);
+
+                    boneBodyTransition["J_Bip_R_LowerArm"].x.setTarget(-0.349066);
+                    boneBodyTransition["J_Bip_R_LowerArm"].y.setTarget(1.22173);
+                    boneBodyTransition["J_Bip_R_LowerArm"].z.setTarget(0);
 
                     cnt = 0;
                 } else { cnt+=1; }
@@ -57,6 +78,11 @@
                 // update
                 for ( var k in FACE_MORPH ) {
                     if( FACE_MORPH[k] == 13 || FACE_MORPH[k] == 14 ) continue; // only both eye
+                    if(FACE_MORPH[k] == 29
+                    || FACE_MORPH[k] == 30
+                    || FACE_MORPH[k] == 31
+                    || FACE_MORPH[k] == 32 
+                    || FACE_MORPH[k] == 33 ) continue; // only both eye
                     morphMesheFace.morphTargetInfluences[FACE_MORPH[k]] = weightFace[FACE_MORPH[k]].update();
                 }
                 for (var b in boneBody) {
@@ -71,7 +97,14 @@
         }
         
         init();
-        animate();        
+        animate();
+
+        function onMouseMoveTracingEye(e) {
+            mousePosX = e.clientX / window.innerWidth;
+            mousePosY = e.clientY / window.innerHeight;
+        }
+
+        renderer.domElement.addEventListener( 'click', onMouseMoveTracingEye, false );
     </script>
 </body>
 </html>

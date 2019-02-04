@@ -41,8 +41,8 @@ var boneBody = {
     "J_Adj_L_FaceEye": -1,
     "J_Adj_R_FaceEye": -1,
     // UpperArm
-    "J_Bip_L_Shoulder": -1,
-    "J_Bip_R_Shoulder": -1,
+    "J_Bip_L_UpperArm": -1,
+    "J_Bip_R_UpperArm": -1,
     // LowwerArm
     "J_Bip_L_LowerArm": -1,
     "J_Bip_R_LowerArm": -1,
@@ -82,12 +82,12 @@ var boneBodyTransition = {
         z : -1,
     },
      // UpperArm
-     "J_Bip_L_Shoulder": {
+     "J_Bip_L_UpperArm": {
         x : -1,
         y : -1,
         z : -1,
     },
-     "J_Bip_R_Shoulder": {
+     "J_Bip_R_UpperArm": {
         x : -1,
         y : -1,
         z : -1,
@@ -143,13 +143,13 @@ function init() {
     loader.load( 'Sendagaya_Shibu.glb', function ( gltf ) {
         gltf.scene.traverse( function ( node ) {
             // Matcap
-            if ( node.isMesh ) {
-                node.material = new THREE.MeshMatcapMaterial( {
-                    color: matColor,
-                    matcap: matcap,
-                    skinning: true,
-                } );
-            }
+            // if ( node.isMesh ) {
+            //     node.material = new THREE.MeshMatcapMaterial( {
+            //         color: matColor,
+            //         matcap: matcap,
+            //         skinning: true,
+            //     } );
+            // }
 
             if (node.isMesh && node.name == "Body") {
                 nodeMeshBody = node;
@@ -224,7 +224,7 @@ class Transition {
         this.isDone = true;
 
         this.step = 0;
-        this.duration = 100;
+        this.duration = 10;
     }
 
     update() {
