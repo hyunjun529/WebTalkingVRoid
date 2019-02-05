@@ -111,13 +111,13 @@ function checkVowel(values) {
 
     // U
     var sum = 0;
-    for(var i = 0; i < 96; i++) {
+    for(var i = 0; i < 128; i++) {
         sum += values[i];
     }
-    for(var i = 96; i < 256; i++) {
+    for(var i = 128; i < 256; i++) {
         sum -= values[i];
     }
-    if(sum > 512) chkU = true;
+    if(sum > 1024) chkU = true;
 
     // result
     if(chkA) {

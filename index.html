@@ -75,28 +75,16 @@
     <script src="script/audio.js"></script>
 
     <script>
-        document.querySelector('#duration-sampling').value = samplingDuration;
-        
-        btnA = document.querySelector('#vowel-a');
-        btnI = document.querySelector('#vowel-i');
-        btnU = document.querySelector('#vowel-u');
-        
-        document.querySelector('#duration-sampling').addEventListener('change', function() {
-            samplingDuration = document.querySelector('#duration-sampling').value;
-        });
+        var ifTalking = 1.0;
 
-        document.querySelector('button').addEventListener('click', function() {
-            startPoint();
-        });
+        var animMouthDuration = 5;
+        var animMouthCnt = 0;
 
-        //------------
+        var animMouthDurationBLOCK = 7;
+        var animMouthCntBLOCK = 0;
 
-        
-
-        //------------
-
-        const yame = 30;
-        var cnt = 0;
+        const animBodyDuration = 20;
+        var animBodyCnt = 0;
 
         var mousePosX = 0.0;
         var mousePosY = 0.0;
@@ -104,14 +92,41 @@
         function animate() {
             requestAnimationFrame( animate );
 
-            if( morphMesheFace ) {
+            if( morphMesheFace ) { // need to change model loaded
                 
-                // reset Target
-                if(yame < cnt){ 
-                    for ( var k in FACE_MORPH ) {
-                        weightFace[FACE_MORPH[k]].setTarget( Math.floor(Math.random() * 7) * 0.075 );
+                if(animMouthDuration < animMouthCnt){ 
+                    weightFace[FACE_MORPH["EYE_CLOSE"]].setTarget( Math.floor(Math.random() * 7) * 0.075 );
+
+                    if( document.querySelector('#vowel-a.active') ) {
+                        weightFace[FACE_MORPH["MTH_A"]].setTarget( 1.0 );
+                    } else {
+                        weightFace[FACE_MORPH["MTH_A"]].setTarget( 0.0 );
+                    }
+                    if( document.querySelector('#vowel-i.active') ) {
+                        weightFace[FACE_MORPH["MTH_I"]].setTarget( 1.0 );
+                    } else {
+                        weightFace[FACE_MORPH["MTH_I"]].setTarget( 0.0 );
+                    }
+                    if( document.querySelector('#vowel-u.active') ) {
+                        weightFace[FACE_MORPH["MTH_U"]].setTarget( 0.8 );
+                    } else {
+                        weightFace[FACE_MORPH["MTH_U"]].setTarget( 0.0 );
                     }
 
+                    animMouthCnt = 0;
+                } else { animMouthCnt += 1; }
+
+
+                if(animMouthDurationBLOCK < animMouthCntBLOCK){ 
+                    weightFace[FACE_MORPH["MTH_A"]].setTarget( 0.0 );
+                    weightFace[FACE_MORPH["MTH_I"]].setTarget( 0.0 );
+                    weightFace[FACE_MORPH["MTH_U"]].setTarget( 0.0 );
+                    
+                    animMouthCntBLOCK = 0;
+                } else { animMouthCntBLOCK += 1; }
+
+
+                if(animBodyDuration < animBodyCnt){ 
                     for (var b in boneBody) {
                         boneBodyTransition[b].x.setTarget( -mousePosY * 0.2 );
                         boneBodyTransition[b].y.setTarget( mousePosX * 0.2 );
@@ -146,17 +161,13 @@
                     boneBodyTransition["J_Bip_R_LowerArm"].y.setTarget(1.22173 - (Math.random() * Math.PI * 0.25) - (Math.PI * 0.25) * 0.01);
                     boneBodyTransition["J_Bip_R_LowerArm"].z.setTarget(0);
 
-                    cnt = 0;
-                } else { cnt+=1; }
+                    animBodyCnt = 0;
+                } else { animBodyCnt += 1; }
             
-                // update
+
+                // real update
                 for ( var k in FACE_MORPH ) {
                     if( FACE_MORPH[k] == 13 || FACE_MORPH[k] == 14 ) continue; // only both eye
-                    if(FACE_MORPH[k] == 29
-                    || FACE_MORPH[k] == 30
-                    || FACE_MORPH[k] == 31
-                    || FACE_MORPH[k] == 32 
-                    || FACE_MORPH[k] == 33 ) continue; // only both eye
                     morphMesheFace.morphTargetInfluences[FACE_MORPH[k]] = weightFace[FACE_MORPH[k]].update();
                 }
                 for (var b in boneBody) {
@@ -179,6 +190,23 @@
         }
 
         renderer.domElement.addEventListener( 'click', onMouseMoveTracingEye, false );
+
+
+        //------------
+
+        document.querySelector('#duration-sampling').value = samplingDuration;
+        
+        btnA = document.querySelector('#vowel-a');
+        btnI = document.querySelector('#vowel-i');
+        btnU = document.querySelector('#vowel-u');
+        
+        document.querySelector('#duration-sampling').addEventListener('change', function() {
+            samplingDuration = document.querySelector('#duration-sampling').value;
+        });
+
+        document.querySelector('button').addEventListener('click', function() {
+            startPoint();
+        });
     </script>
 </body>
 </html>
