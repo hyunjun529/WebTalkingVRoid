@@ -15,16 +15,17 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col">
+                <button>play</button>
                 <h2 class="mt-4">Audio Visualization</h2>
-                <div>
+                <!-- <div>
                     <h3 class="mt-3">all vowels</h3>
                     <canvas id="cvs-audio-visualization-sum" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div>
+                </div> -->
                 <div>
                     <h3 class="mt-3">raw input</h3>
                     <canvas id="cvs-audio-visualization-input" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
                 </div>
-                <div>
+                <!-- <div>
                     <h3 class="mt-3">vowel - a</h3>
                     <canvas id="cvs-audio-visualization-a" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
                 </div>
@@ -35,19 +36,17 @@
                 <div>
                     <h3 class="mt-3">vowel - u</h3>
                     <canvas id="cvs-audio-visualization-u" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 
-    <script src="script/three.min.js"></script>
-
-    <script src="script/js/controls/OrbitControls.js"></script>
-    <script src="script/js/loaders/GLTFLoader.js"></script>
-
-    <script src="script/js/WebGL.js"></script>
-
-    <script src="script/common.js"></script>
     <script src="script/audio.js"></script>
+
+    <script type="text/javascript">
+        document.querySelector('button').addEventListener('click', function() {
+            startPoint();
+        });
+    </script>
 </body>
 </html>
