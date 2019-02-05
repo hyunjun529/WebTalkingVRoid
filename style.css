@@ -11,3 +11,11 @@
 #broadcast {
     background-color: whitesmoke;
 }
+
+.vowel {
+    background-color: #990022;
+}
+
+.vowel.active {
+    background-color: #229900;
+}

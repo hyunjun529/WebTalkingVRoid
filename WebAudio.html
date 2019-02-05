@@ -15,28 +15,24 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col">
-                <button>play</button>
+                <div class="mt-2">
+                    <button id="start">시작!</button>
+                    <input  id="duration-sampling"type="number">
+                </div>
+                <div class="mt-2">
+                    <button id="vowel-a" class="vowel">아</button>
+                    <button id="vowel-i" class="vowel">이</button>
+                    <button id="vowel-u" class="vowel">우</button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col">
                 <h2 class="mt-4">Audio Visualization</h2>
-                <!-- <div>
-                    <h3 class="mt-3">all vowels</h3>
-                    <canvas id="cvs-audio-visualization-sum" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div> -->
                 <div>
                     <h3 class="mt-3">raw input</h3>
                     <canvas id="cvs-audio-visualization-input" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
                 </div>
-                <!-- <div>
-                    <h3 class="mt-3">vowel - a</h3>
-                    <canvas id="cvs-audio-visualization-a" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div>
-                <div>
-                    <h3 class="mt-3">vowel - i</h3>
-                    <canvas id="cvs-audio-visualization-i" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div>
-                <div>
-                    <h3 class="mt-3">vowel - u</h3>
-                    <canvas id="cvs-audio-visualization-u" class="cvs-audio-visualization" width="640" height="180" style="background-color:black; width:100%; max-width:640px;"></canvas>
-                </div> -->
             </div>
         </div>
     </div>
@@ -44,6 +40,16 @@
     <script src="script/audio.js"></script>
 
     <script type="text/javascript">
+        document.querySelector('#duration-sampling').value = samplingDuration;
+        
+        btnA = document.querySelector('#vowel-a');
+        btnI = document.querySelector('#vowel-i');
+        btnU = document.querySelector('#vowel-u');
+        
+        document.querySelector('#duration-sampling').addEventListener('change', function() {
+            samplingDuration = document.querySelector('#duration-sampling').value;
+        });
+
         document.querySelector('button').addEventListener('click', function() {
             startPoint();
         });
