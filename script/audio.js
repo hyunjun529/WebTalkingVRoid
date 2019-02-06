@@ -1,14 +1,19 @@
 var canvas = document.querySelector('#cvs-audio-visualization-input');
 var canvasCtx = canvas.getContext("2d");
 
-// define audio context
-// Webkit/blink browsers need prefix, Safari won't work without window.
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+var audioCtx;
 
-var gainNode = audioCtx.createGain();
-var analyser = audioCtx.createAnalyser();
+var gainNode;
+var analyser;
 
 function startPoint() {
+    // define audio context
+    // Webkit/blink browsers need prefix, Safari won't work without window.
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    gainNode = audioCtx.createGain();
+    analyser = audioCtx.createAnalyser();
+
     // constraints - only audio needed for this app
     navigator.getUserMedia({ audio: true },
 
