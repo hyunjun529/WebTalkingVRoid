@@ -14,24 +14,22 @@ function startPoint() {
     gainNode = audioCtx.createGain();
     analyser = audioCtx.createAnalyser();
 
-    // constraints - only audio needed for this app
-    navigator.getUserMedia({ audio: true },
+    var constraints = { audio: true };
 
-        // Success callback
-        function (stream) {
+    // constraints - only audio needed for this app
+    navigator.mediaDevices.getUserMedia(constraints)
+    .then(function (stream) {
+            // Success callback
             source = audioCtx.createMediaStreamSource(stream);
             source.connect(analyser);
             analyser.connect(gainNode);
             gainNode.connect(audioCtx.destination); // connecting the different audio graph nodes together
 
             visualize(stream);
-        },
-
-        // Error callback
-        function (err) {
+    }).catch(function (err) {
+            // Error callback
             console.log('The following gUM error occured: ' + err);
-        }
-    );
+    });
 }
 
 var samplingDuration = 1;
